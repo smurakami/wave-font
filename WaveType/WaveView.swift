@@ -11,7 +11,8 @@ import Cocoa
 class WaveView: NSView {
     var counter = 0
     var buffer: [Float] = [] { didSet { counter = 0 } }
-    var step = 512
+    var resolution = 256
+    var waveNum = 10
     var timer = Timer()
     let fps: TimeInterval = 60
     
@@ -36,30 +37,41 @@ class WaveView: NSView {
         super.draw(dirtyRect)
         // parameters
         let size = dirtyRect.size
-        let start = NSPoint(x: 0, y: size.height/2)
-        let end = NSPoint(x: size.width, y: size.height/2)
-        
-        
         // Drawing code here.
         let path = NSBezierPath()
-        path.move(to: start)
         
         if buffer.count > 0 {
-            for index in 0..<step {
-                let val = buffer[(index + step * counter) % buffer.count]
-                path.line(to: NSPoint(
-                    x: size.width * CGFloat(index)/CGFloat(step),
-                    y: CGFloat(0.5 + 0.5 * val) * size.height
-                ))
+            for index in 0..<resolution {
+                let val = buffer[(index + resolution * counter) % buffer.count]
+                let point = NSPoint(
+                    x: size.width * CGFloat(index)/CGFloat(resolution),
+                    y: CGFloat(0.5 * val) * size.height)
+                if index == 0 {
+                    path.move(to: point)
+                } else {
+                    path.line(to: point)
+                }
             }
+        } else {
+            let start = NSPoint(x: 0, y: size.height/2)
+            let end = NSPoint(x: size.width, y: size.height/2)
+            path.move(to: start)
+            path.line(to: end)
         }
         
-        path.line(to: end)
-        
         // appearance
-        path.stroke()
         NSColor.black.set()
         path.lineWidth = 1
+        
+        // stroke
+        let height = size.height / CGFloat(waveNum)
+        path.transform(using: AffineTransform(translationByX: 0, byY: -height/2))
+        
+        for _ in 0..<waveNum {
+            path.transform(using: AffineTransform(translationByX: 0, byY: height))
+            path.stroke()
+        }
+        
         
         counter += 1
     }
