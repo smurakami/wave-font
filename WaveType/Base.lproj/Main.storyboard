@@ -662,7 +662,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="WindowController" customModule="WaveType" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -685,11 +685,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HqU-08-P23" customClass="WaveView" customModule="WaveType" customModuleProvider="target">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="HqU-08-P23" customClass="WaveView" customModule="WaveType" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="HqU-08-P23" secondAttribute="trailing" id="FUK-aN-rVU"/>
+                            <constraint firstItem="HqU-08-P23" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="gYv-PC-kt9"/>
+                            <constraint firstItem="HqU-08-P23" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="qjl-BN-o48"/>
+                            <constraint firstAttribute="bottom" secondItem="HqU-08-P23" secondAttribute="bottom" id="zwm-5n-IBX"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="waveView" destination="HqU-08-P23" id="RDl-SR-p6l"/>

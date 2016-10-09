@@ -13,6 +13,7 @@
 		37682DB51DA9C48D0011F56E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37682DB31DA9C48D0011F56E /* Main.storyboard */; };
 		37682DBD1DA9C4BC0011F56E /* WaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37682DBC1DA9C4BC0011F56E /* WaveManager.swift */; };
 		37682DBF1DA9D9BA0011F56E /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37682DBE1DA9D9BA0011F56E /* WaveView.swift */; };
+		37682DC11DAA0C230011F56E /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37682DC01DAA0C220011F56E /* WindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		37682DB61DA9C48D0011F56E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37682DBC1DA9C4BC0011F56E /* WaveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveManager.swift; sourceTree = "<group>"; };
 		37682DBE1DA9D9BA0011F56E /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
+		37682DC01DAA0C220011F56E /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				37682DB31DA9C48D0011F56E /* Main.storyboard */,
 				37682DB61DA9C48D0011F56E /* Info.plist */,
 				37682DBE1DA9D9BA0011F56E /* WaveView.swift */,
+				37682DC01DAA0C220011F56E /* WindowController.swift */,
 			);
 			path = WaveType;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37682DB01DA9C48D0011F56E /* WaveViewController.swift in Sources */,
+				37682DC11DAA0C230011F56E /* WindowController.swift in Sources */,
 				37682DAE1DA9C48D0011F56E /* AppDelegate.swift in Sources */,
 				37682DBD1DA9C4BC0011F56E /* WaveManager.swift in Sources */,
 				37682DBF1DA9D9BA0011F56E /* WaveView.swift in Sources */,
