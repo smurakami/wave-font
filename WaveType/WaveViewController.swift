@@ -26,7 +26,7 @@ class WaveViewController: NSViewController {
             }
         }
         
-        // Do any additional setup after loading the view.
+        initParams()
     }
 
     override var representedObject: Any? {
@@ -35,6 +35,38 @@ class WaveViewController: NSViewController {
         }
     }
 
+    // preferences
+    
+    func initParams() {
+        waveNum = 1
+        lineWidth = 1
+        resolution = 256
+        rotation = 0
+    }
+    
+    var waveNum: Int = 1 {
+        didSet {
+            waveView.waveNum = waveNum
+        }
+    }
+    
+    var lineWidth: CGFloat = 1 {
+        didSet {
+            waveView.lineWidth = lineWidth
+        }
+        
+    }
+    
+    var resolution: Int = 256 {
+        didSet {
+            waveView.resolution = resolution
+        }
+    }
 
+    var rotation: CGFloat = 0 {
+        didSet {
+            waveView.rotation = rotation * CGFloat(M_PI) / 180
+        }
+    }
 }
 

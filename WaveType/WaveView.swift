@@ -9,12 +9,18 @@
 import Cocoa
 
 class WaveView: NSView {
-    var counter = 0
+    var counter: Int = 0
     var buffer: [Float] = [] { didSet { counter = 0 } }
-    var resolution = 256
-    var waveNum = 10
+    var resolution: Int = 256
+    var waveNum: Int = 1
     var timer = Timer()
+    var lineWidth: CGFloat = 1
     let fps: TimeInterval = 60
+    var rotation: CGFloat = 0
+    var backgroundColor: NSColor = NSColor.white
+    var lineColor: NSColor = NSColor.black
+    
+    var image = NSImage()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -27,6 +33,8 @@ class WaveView: NSView {
     }
     
     func setup() {
+        image = NSImage(named: "wave-font") ?? NSImage()
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1.0/30, repeats: true) {
             [weak self] timer in
             self?.needsDisplay = true
@@ -35,17 +43,30 @@ class WaveView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
+        backgroundColor.set()
+        NSRectFill(dirtyRect)
+        
         // parameters
         let size = dirtyRect.size
         // Drawing code here.
         let path = NSBezierPath()
         
+        let power: Float
         if buffer.count > 0 {
+            var sum: Float = 0
+            for index in 0..<resolution {
+                let val = buffer[(index + resolution * counter) % buffer.count]
+                sum += val ** 2
+            }
+            
+            power = sum / Float(resolution)
+            
             for index in 0..<resolution {
                 let val = buffer[(index + resolution * counter) % buffer.count]
                 let point = NSPoint(
-                    x: size.width * CGFloat(index)/CGFloat(resolution),
+                    x: size.width * CGFloat(index)/CGFloat(resolution - 1),
                     y: CGFloat(0.5 * val) * size.height)
+                
                 if index == 0 {
                     path.move(to: point)
                 } else {
@@ -57,23 +78,48 @@ class WaveView: NSView {
             let end = NSPoint(x: size.width, y: size.height/2)
             path.move(to: start)
             path.line(to: end)
+            power = 0
         }
         
         // appearance
-        NSColor.black.set()
-        path.lineWidth = 1
+//        lineColor.set()
+        
+        let hue = -CGFloat(log(power))/30.0
+        NSLog("%f", hue)
+        NSColor(calibratedHue: hue, saturation: 1, brightness: 0.5, alpha: 1).set()
+        
+        path.lineWidth = lineWidth
+        path.lineJoinStyle = .roundLineJoinStyle
+        
+        // Do any additional setup after loading the view.
         
         // stroke
         let height = size.height / CGFloat(waveNum)
+        
         path.transform(using: AffineTransform(translationByX: 0, byY: -height/2))
+        path.transform(using: AffineTransform(rotationByRadians: rotation))
         
         for _ in 0..<waveNum {
-            path.transform(using: AffineTransform(translationByX: 0, byY: height))
+            let transform = AffineTransform(translationByX: 0, byY: height)
+            path.transform(using: transform)
             path.stroke()
         }
         
+        drawImage(dirtyRect)
         
         counter += 1
+    }
+    
+    func drawImage(_ dirtyRect: NSRect) {
+        let scale = dirtyRect.width / image.size.width
+        let size = NSSize(width: image.size.width * scale, height: image.size.height * scale)
+        let rect = NSRect(
+            x: (dirtyRect.size.width - size.width)/2,
+            y: (dirtyRect.size.height - size.height)/2,
+            width: size.width,
+            height: size.height)
+        
+        image.draw(in: rect)
     }
     
 }
