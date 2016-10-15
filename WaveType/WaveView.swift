@@ -63,6 +63,7 @@ class WaveView: NSView {
             
             for index in 0..<resolution {
                 let val = buffer[(index + resolution * counter) % buffer.count]
+                
                 let point = NSPoint(
                     x: size.width * CGFloat(index)/CGFloat(resolution - 1),
                     y: CGFloat(0.5 * val) * size.height)
@@ -85,7 +86,7 @@ class WaveView: NSView {
 //        lineColor.set()
         
         let hue = -CGFloat(log(power))/30.0
-        NSLog("%f", hue)
+//        NSLog("%f", hue)
         NSColor(calibratedHue: hue, saturation: 1, brightness: 0.5, alpha: 1).set()
         
         path.lineWidth = lineWidth
