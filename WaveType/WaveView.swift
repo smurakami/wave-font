@@ -22,6 +22,8 @@ class WaveView: NSView {
     
     var image = NSImage()
     
+    var shape = Shape()
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
@@ -46,6 +48,14 @@ class WaveView: NSView {
         backgroundColor.set()
         NSRectFill(dirtyRect)
         
+//        drawWave(in: dirtyRect)
+//        drawImage(dirtyRect)
+        shape.draw(in: dirtyRect, with: buffer)
+        
+        counter += 1
+    }
+    
+    func drawWave(in dirtyRect: NSRect) {
         // parameters
         let size = dirtyRect.size
         // Drawing code here.
@@ -106,21 +116,18 @@ class WaveView: NSView {
             path.stroke()
         }
         
-        drawImage(dirtyRect)
-        
-        counter += 1
     }
     
-    func drawImage(_ dirtyRect: NSRect) {
-        let scale = dirtyRect.width / image.size.width
-        let size = NSSize(width: image.size.width * scale, height: image.size.height * scale)
-        let rect = NSRect(
-            x: (dirtyRect.size.width - size.width)/2,
-            y: (dirtyRect.size.height - size.height)/2,
-            width: size.width,
-            height: size.height)
-        
-        image.draw(in: rect)
-    }
+//    func drawImage(_ dirtyRect: NSRect) {
+//        let scale = dirtyRect.width / image.size.width
+//        let size = NSSize(width: image.size.width * scale, height: image.size.height * scale)
+//        let rect = NSRect(
+//            x: (dirtyRect.size.width - size.width)/2,
+//            y: (dirtyRect.size.height - size.height)/2,
+//            width: size.width,
+//            height: size.height)
+//        
+//        image.draw(in: rect)
+//    }
     
 }

@@ -166,6 +166,17 @@ public func *= (left: inout CGPoint, right: CGPoint) {
 }
 
 /**
+ * Multiplies CGPoint and CGSize and returns the result as a new CGPoint.
+ */
+public func * (left: CGPoint, right: CGSize) -> CGPoint {
+    return CGPoint(x: left.x * right.width, y: left.y * right.height)
+}
+
+public func *= (left: inout CGPoint, right: CGSize) {
+    left = left * right
+}
+
+/**
  * Multiplies the x and y fields of a CGPoint with the same scalar value and
  * returns the result as a new CGPoint.
  */

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3706CA0D1DB22A890016BA21 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3706CA0C1DB22A890016BA21 /* CGPoint+Extensions.swift */; };
+		3706CA0F1DB22BCB0016BA21 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3706CA0E1DB22BCB0016BA21 /* Shape.swift */; };
 		37682DAE1DA9C48D0011F56E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37682DAD1DA9C48D0011F56E /* AppDelegate.swift */; };
 		37682DB01DA9C48D0011F56E /* WaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37682DAF1DA9C48D0011F56E /* WaveViewController.swift */; };
 		37682DB21DA9C48D0011F56E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37682DB11DA9C48D0011F56E /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		3706CA0C1DB22A890016BA21 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		3706CA0E1DB22BCB0016BA21 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		37682DAA1DA9C48D0011F56E /* WaveType.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaveType.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37682DAD1DA9C48D0011F56E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37682DAF1DA9C48D0011F56E /* WaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				37682DB61DA9C48D0011F56E /* Info.plist */,
 				37682DBE1DA9D9BA0011F56E /* WaveView.swift */,
 				37682DC01DAA0C220011F56E /* WindowController.swift */,
+				3706CA0E1DB22BCB0016BA21 /* Shape.swift */,
 			);
 			path = WaveType;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37682DB01DA9C48D0011F56E /* WaveViewController.swift in Sources */,
+				3706CA0F1DB22BCB0016BA21 /* Shape.swift in Sources */,
 				37682DC11DAA0C230011F56E /* WindowController.swift in Sources */,
 				37682DAE1DA9C48D0011F56E /* AppDelegate.swift in Sources */,
 				37682DBD1DA9C4BC0011F56E /* WaveManager.swift in Sources */,
